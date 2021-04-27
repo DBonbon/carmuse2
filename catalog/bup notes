@@ -1,0 +1,59 @@
+from django.db import models
+from django.urls import reverse # Used to generate URLs by reversing the URL patterns
+
+
+class Painting(models.Model):
+    '''Model representing a painting'''
+    title = models.CharField(max_length=200)
+    painter = models.ForeignKey('Painter', on_delete=models.SET_NULL, null=True)
+    # Foreign Key used because a painting can have only one painter, but a painter can paint multiple paintings
+    # Painter as a string rather than object because it hasn't been declared yet in the file
+    description = models.TextField(max_length=1000, help_text='Enter a brief description of the Painting')
+    '''owner = models.ForeignKey('User',
+    category = models.Max(Category, help_text='Select tags for this painting')
+    technique = models.ForeignKey(Technique, on_delete=models.SET_NULL, null=True)
+    support = models.ForeignKey(Support, on_delete=models.SET_NULL, null=True)
+    image = models.FilePathField(path="/img")
+    date = models.DateField(null=True, blank=True)
+    dimension = models.CharField(max_length=20)
+    signature = models.BooleanField(null=True, blank=True)'''
+    remark = models.TextField(max_length=200, help_text="Enter any remark that doesn't match any other category")
+
+    class Meta:
+        ordering = ['title', 'painter']
+
+    '''def get_absolute_url(self):
+        """Returns the url to access a particular painting instance."""
+        return reverse('paint-detail', arg=[str(self.id)])'''
+
+    def __str__(self):
+        """String for representing the Model object."""
+        return self.title
+
+
+class Painter(models.Model):
+    """Model representing a painter."""
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    date_of_birth = models.DateField(null=True, blank=True)
+    date_of_death = models.DateField('died', null=True, blank=True)
+
+    class Meta:
+        ordering = ['last_name', 'first_name']
+
+    '''def get_absolute_url(self):
+        """Returns the url to access a particular painter instance."""
+        return reverse('painter-detail', args=[str(self.id)])'''
+
+    def __str__(self):
+        """String for representing the Model object."""
+        return f'{self.last_name}, {self.first_name}'
+
+
+
+and on the admin tab:
+from django.contrib import admin
+from .models import Painter, Painting  # Tehcnique, Category, Location, Support,
+
+admin.site.register(Painting)
+admin.site.register(Painter)

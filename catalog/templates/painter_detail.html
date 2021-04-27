@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_content %}
+<h1>{{ painter.first_name }}</h1>
+<div class="row">
+    <div class="col-md-6">
+        <img src="{{painter.image.url}}" alt="" width="100%">
+    </div>
+    <div class="col-md-4">
+        <h5>About the painter:</h5>
+        <p>{{ painter.biography }}</p>
+    </div>
+</div>
+
+{% endblock %}
+

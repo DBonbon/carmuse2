@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+  <h1>Cariage Museum Home</h1>
+  <p>Welcome to CariageMuseum, a website developed by <em>Yariv Friedman</em>!</p>
+  <h2>Dynamic content</h2>
+  <p>The museum has currently the following record counts:</p>
+  <ul>
+    <li><strong>Ouevres:</strong> {{ num_ouevres }}</li>
+    <li><strong>Categories:</strong> {{ num_categories }}</li>
+    <li><strong>Painters:</strong> {{ num_painters }}</li>
+    <li><strong>Supports:</strong> {{ num_supports }}</li>
+  </ul>
+
+  <p>You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}.</p>
+{% endblock %}
