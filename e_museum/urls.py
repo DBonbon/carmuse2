@@ -21,7 +21,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('catalog/', include('catalog.urls')),
+    path('', include('catalog.urls')),  # todo link the HomePage to Catalog, Review after Galleries are created
+    path('catalog', include('catalog.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('blog/', include('blog.urls')),
 ]

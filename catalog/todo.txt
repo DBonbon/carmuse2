@@ -1,0 +1,4 @@
+todo
+    painters biography - linebreaker - DONE
+    change painter profile image size
+    Verbose names, for categories title in Admin

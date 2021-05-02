@@ -1,5 +1,7 @@
 from django import forms
 
+    # todo users non admin fonctionality, i.e. login structure for visitors.
+    # todo creating forms, authetification, etc.
 
 class CommentForm(forms.Form):
     author = forms.CharField(

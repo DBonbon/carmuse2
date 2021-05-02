@@ -1,6 +1,8 @@
 from django.db import models
 from django.urls import reverse # Used to generate URLs by reversing the URL patterns
 
+    # todo verify and modify all Delete conditions.
+
 
 class Medium(models.Model):
     """Model representing he type of art material used (e.g. watercolor, oil, etc')."""
@@ -25,6 +27,7 @@ class Support(models.Model):
         """String for representing the Model object (in Admin site etc.)"""
         return self.name
 
+        # TODO add gallerie model
 
 class Category(models.Model):
     """Model representing the painting's category (e.g. Painting, Drawing, etc')."""
@@ -94,7 +97,7 @@ class Painting(models.Model):
     dimensions = models.CharField(max_length=20, null=True, blank=True)
     signature = models.BooleanField(null=True, blank=True)
     remark = models.TextField(max_length=200, null=True, blank=True, help_text="Enter any remark that doesn't match any other category")
-
+        #TODO should image be created as independant model?
     class Meta:
         ordering = ['title', 'painter']
 

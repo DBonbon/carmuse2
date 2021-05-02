@@ -78,6 +78,13 @@ admin.site.register(Painting, PaintingAdmin)
 class ViewAdmin(ImportExportModelAdmin):
     pass
 
+    # todo Section Painter and Painting
+    # todo Stats tab (not Google Analytics!) similar to the home page
+    # todo create user types, i.e. SuperUser, view only, limited by Paintings etc'.
+    #
+
+
+
 
 
 
