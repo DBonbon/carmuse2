@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'catalog.apps.CatalogConfig',
     'blog.apps.BlogConfig',
+    'homepage.apps.HomepageConfig',
     'import_export',
     'django_admin_inline_paginator'
 ]
@@ -59,7 +60,8 @@ ROOT_URLCONF = 'e_museum.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [str(BASE_DIR.joinpath('templates'))],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        # 'DIRS': [str(BASE_DIR.joinpath('templates'))],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
