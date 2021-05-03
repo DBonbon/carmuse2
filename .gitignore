@@ -1,16 +1,2 @@
-# Python
-*.pyc
-*~
+/venv
 __pycache__
-
-# Env
-.env
-myvenv/
-venv/
-
-# Database
-# db.sqlite3
-
-# Static folder at project root
-# /static/
-
