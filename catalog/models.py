@@ -87,7 +87,7 @@ class Painting(models.Model):
     support = models.ForeignKey(Support, on_delete=models.SET_NULL, blank=True, null=True)
     category = models.ForeignKey(Category, related_name='categories', on_delete=models.SET_NULL, blank=True, null=True)
     location = models.ForeignKey(Location, on_delete=models.SET_NULL, null=True, blank=True)
-    tag = models.ManyToManyField(Tag, null=True, blank=True, help_text="Select tags for this painting")
+    tag = models.ManyToManyField(Tag, blank=True, help_text="Select tags for this painting")
     image = models.ImageField(null=True, blank=True) # , upload_to='paintings'
     # image = models.ImageField(path="catalog\\static\\images\\", null=True, blank=True)
     date = models.DateField(null=True, blank=True)

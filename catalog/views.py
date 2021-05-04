@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from catalog.models import Painter, Painting, Category, Support
+from . models import Painter, Painting, Category, Support
 # from django.views import generic
 
 

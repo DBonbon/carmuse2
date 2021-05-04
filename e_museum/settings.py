@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'catalog.apps.CatalogConfig',
     'blog.apps.BlogConfig',
+    'about.apps.AboutConfig',
+    'contact.apps.ContactConfig',
     'homepage.apps.HomepageConfig',
     'import_export',
     'django_admin_inline_paginator'
