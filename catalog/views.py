@@ -5,7 +5,7 @@ from . models import Painter, Painting, Category, Support
 
 def index(request):
     num_ouevres = Painting.objects.all().count
-    num_painters = Painter.objects.all().count
+    # num_painters = Painter.objects.all().count
     num_categories = Category.objects.all().count
     num_supports = Support.objects.all().count
 
@@ -18,7 +18,7 @@ def index(request):
     context = {
         'num_ouevres': num_ouevres,
         'num_categories': num_categories,
-        'num_painters': num_painters,
+        # 'num_painters': num_painters,
         'num_supports': num_supports,
         'num_visits': num_visits,
     }

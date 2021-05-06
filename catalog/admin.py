@@ -61,7 +61,7 @@ class PaintingAdmin(ImportExportModelAdmin):
     #  group them in a tuple within a list to display them horizontally.
     fieldsets = (
         (None, {
-            'fields': [('title', 'painter', 'dimensions'), 'description', 'image']
+            'fields': [('title', 'painter', 'largeur', 'hauteur'), 'description', 'image']
         }),
         ('Meta', {
             'fields': [('location', 'motif', 'tag'), ('category', 'medium', 'support')]

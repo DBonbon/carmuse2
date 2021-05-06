@@ -91,9 +91,11 @@ class Painting(models.Model):
     image = models.ImageField(null=True, blank=True) # , upload_to='paintings'
     # image = models.ImageField(path="catalog\\static\\images\\", null=True, blank=True)
     date = models.DateField(null=True, blank=True)
-    dimensions = models.CharField(max_length=20, null=True, blank=True)
+    largeur = models.FloatField(max_length=10, null=True, blank=True)
+    hauteur = models.FloatField(max_length=10, null=True, blank=True)
     signature = models.BooleanField(null=True, blank=True)
     remark = models.TextField(max_length=200, null=True, blank=True, help_text="Enter any remark that doesn't match any other category")
+    reference = models.CharField(max_length=10, null=True, blank=True, help_text="ref. orinal noté par Jean-Marie")
 
     class Meta:
         ordering = ['title', 'painter']
