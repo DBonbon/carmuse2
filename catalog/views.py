@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from . models import Painter, Painting, Category, Support
 # from django.views import generic
+from django.core.paginator import Paginator
 
 
 def index(request):
@@ -28,7 +29,12 @@ def index(request):
 
 def painting_index(request):
     paintings = Painting.objects.all()
-    context = {"paintings": paintings}
+    paginator = Paginator(paintings, 24)
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {'page_obj': page_obj}
     return render(request, "catalog/painting_index.html", context)
 
 

@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'contact.apps.ContactConfig',
     'homepage.apps.HomepageConfig',
     'import_export',
-    'django_admin_inline_paginator'
+    'django_admin_inline_paginator',
+    'django_bootstrap_icons',
 ]
 
 MIDDLEWARE = [

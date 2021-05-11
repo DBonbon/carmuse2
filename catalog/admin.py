@@ -8,11 +8,32 @@ from django_admin_inline_paginator.admin import TabularInlinePaginated
 
 
 '''General sections'''
-admin.site.register(Medium)
-admin.site.register(Support)
-admin.site.register(Category)
-admin.site.register(Location)
-admin.site.register(Tag)
+
+class MediumAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name')
+
+admin.site.register(Medium, MediumAdmin)
+
+class SupportAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name')
+
+admin.site.register(Support, SupportAdmin)
+
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name')
+
+admin.site.register(Category, CategoryAdmin)
+
+class LocationAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name')
+
+admin.site.register(Location, LocationAdmin)
+
+
+class TagAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name')
+
+admin.site.register(Tag, TagAdmin)
 
 '''Painter section'''
 
@@ -51,12 +72,13 @@ admin.site.register(Painter, PainterAdmin)
 class PaintingResource(resources.ModelResource):
     class Meta:
         model = Painting
+        fields = ('painter', 'category', 'medium', 'support')
 
 
 class PaintingAdmin(ImportExportModelAdmin):
     resources_class = PaintingResource
     list_display = ('id', 'title', 'painter', 'category', 'medium', 'display_tag', 'motif',)
-    list_filter = ('title', 'painter', 'category', 'medium', 'motif')
+    list_filter = ('painter', 'category', 'medium', 'motif')
     # filedsets allow to section the detailed view.
     #  group them in a tuple within a list to display them horizontally.
     fieldsets = (
