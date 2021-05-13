@@ -56,8 +56,8 @@ class PainterResource(resources.ModelResource):
 
 class PainterAdmin(ImportExportModelAdmin):
     resources_class = PainterResource
-    list_display = ('last_name', 'first_name', 'date_of_birth', 'date_of_death', 'image')
-    fields = [('first_name', 'last_name'), ('date_of_birth', 'date_of_death'), 'biography', 'image']
+    list_display = ('last_name', 'first_name', 'date_of_birth', 'date_of_death')
+    fields = [('first_name', 'last_name'), ('date_of_birth', 'date_of_death'), 'biography', 'pitch', 'image']
     inlines = (PaintingsAdminInline,)
     # inlines = [PaintingsInline]
     # list_per_page = 2

@@ -9,6 +9,7 @@ django-import-export = "*"
 django-admin-inline-paginator = "*"
 pillow = "*"
 django-bootstrap-icons = "*"
+django-icons = "*"
 
 [dev-packages]
 

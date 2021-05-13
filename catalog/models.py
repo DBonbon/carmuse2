@@ -1,5 +1,9 @@
 from django.db import models
+import PIL
+from PIL import Image, ExifTags
 from django.urls import reverse # Used to generate URLs by reversing the URL patterns
+
+mywidth = 300   # for image resize
 
 
 class Medium(models.Model):
@@ -89,7 +93,6 @@ class Painting(models.Model):
     location = models.ForeignKey(Location, on_delete=models.SET_NULL, null=True, blank=True)
     tag = models.ManyToManyField(Tag, blank=True, help_text="Select tags for this painting")
     image = models.ImageField(null=True, blank=True) # , upload_to='paintings'
-    # image = models.ImageField(path="catalog\\static\\images\\", null=True, blank=True)
     date = models.DateField(null=True, blank=True)
     largeur = models.FloatField(max_length=10, null=True, blank=True)
     hauteur = models.FloatField(max_length=10, null=True, blank=True)
@@ -121,12 +124,40 @@ class Painter(models.Model):
     last_name = models.CharField(max_length=100)
     date_of_birth = models.DateField(null=True, blank=True)
     date_of_death = models.DateField('died', null=True, blank=True)
-    image = models.ImageField(null=True, blank=True) # , upload_to="painters"
     biography = models.TextField(null=True, blank=True, help_text="Describe painter's biography")
+    pitch = models.TextField(max_length=500, null=True, blank=True, help_text="Pitch pour capter l'attention")
     remark = models.CharField(max_length=200, null=True, blank=True)
+    image = models.ImageField(null=True, blank=True) # , upload_to="painters"
 
     class Meta:
         ordering = ['last_name', 'first_name']
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        img= Image.open(self.image.path)
+
+        try:
+            # image = Image.open(filepath)
+            for orientation in ExifTags.TAGS.keys():
+                if ExifTags.TAGS[orientation] == 'Orientation':
+                    break
+            exif = dict(img._getexif().items())
+
+            if exif[orientation] == 3:
+                img = img.rotate(180, expand=True)
+            elif exif[orientation] == 6:
+                img = img.rotate(270, expand=True)
+            elif exif[orientation] == 8:
+                img = img.rotate(90, expand=True)
+        except (AttributeError, KeyError, IndexError):
+            pass
+
+        if img.height > 250 or img.weight > 250:
+            output_size = (250, 250)
+            img.thumbnail(output_size)
+            #rotate_image(self.image.path)
+            img.save(self.image.path)
+
 
     '''def get_absolute_url(self):
         """Returns the url to access a particular painter instance."""
@@ -135,4 +166,14 @@ class Painter(models.Model):
     def __str__(self):
         """String for representing the Model object."""
         return f'{self.last_name}, {self.first_name}'
+
+
+
+
+        '''img= Image.open(self.image)
+        wpercent = (mywidth/float(img.size[0]))
+        hsize = int((float(img.size[1]) * float(wpercent)))
+        img = img.resize((mywidth, hsize), PIL.Image.ANTIALIAS)
+        img.save('resized.jpg')
+        '''
 

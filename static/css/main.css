@@ -54,7 +54,7 @@
 
 @media (min-width: 992px) {
   .masthead {
-    padding-top: 6rem;
+    padding-top: calc(6rem + 74px);
     padding-bottom: 6rem;
   }
 }
@@ -65,3 +65,18 @@ background-repeat: no-repeat;
 background-size: cover;
 }
 
+.overlay {
+	height: 30px;
+   	width: 330px;
+  	background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    bottom: 0;
+  	color: white;
+  	padding: -20px;
+}
+
+.rectangle {
+  height: 250px;
+  width: 330px;
+  background-color: #555;
+}

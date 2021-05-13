@@ -45,8 +45,14 @@ def painting_detail(request, pk):
 
 
 def painter_index(request):
-    painters = Painter.objects.all().count
-    context = {"painters": painters}
+    painters = Painter.objects.all()
+    # paginator = Paginator(painters, 6)
+
+    # age_number = request.GET.get('page')
+    # page_obj = paginator.get_page(page_number)
+
+    # context = {'page_obj': page_obj}
+    context = {'painters': painters}
     return render(request, "catalog/painter_index.html", context)
 
 
