@@ -6,7 +6,7 @@ from blog.models import Post, Comment
 def blog_index(request):
     posts = Post.objects.all().order_by("-created_on")
     context = {"posts": posts}
-    return render(request, "blog_index.html", context)
+    return render(request, "blog/blog_index.html", context)
 
 
 def blog_category(request, category):
@@ -14,7 +14,7 @@ def blog_category(request, category):
         "-created_on"
     )
     context = {"category": category, "posts": posts}
-    return render(request, "blog_category.html", context)
+    return render(request, "blog/blog_category.html", context)
 
 
 def blog_detail(request, pk):
@@ -33,4 +33,4 @@ def blog_detail(request, pk):
             comment.save()
 
     context = {"post": post, "comments": comments, "form": form}
-    return render(request, "blog_detail.html", context)
+    return render(request, "blog/blog_detail.html", context)

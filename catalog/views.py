@@ -1,11 +1,12 @@
 from django.shortcuts import render
-from catalog.models import Painter, Painting, Category, Support
-from django.views import generic
+from . models import Painter, Painting, Category, Support
+# from django.views import generic
+from django.core.paginator import Paginator
 
 
 def index(request):
     num_ouevres = Painting.objects.all().count
-    num_painters = Painter.objects.all().count
+    # num_painters = Painter.objects.all().count
     num_categories = Category.objects.all().count
     num_supports = Support.objects.all().count
 
@@ -18,37 +19,40 @@ def index(request):
     context = {
         'num_ouevres': num_ouevres,
         'num_categories': num_categories,
-        'num_painters': num_painters,
+        # 'num_painters': num_painters,
         'num_supports': num_supports,
         'num_visits': num_visits,
     }
 
-    return render(request, 'index.html', context=context)
+    return render(request, 'catalog/index.html', context)
 
 
 def painting_index(request):
     paintings = Painting.objects.all()
-    context = {"paintings": paintings}
-    return render(request, "painting_index.html", context=context)
+    paginator = Paginator(paintings, 24)
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {'page_obj': page_obj}
+    return render(request, "catalog/painting_index.html", context)
 
 
 def painting_detail(request, pk):
-    project = Painting.objects.get(pk=pk)
-    context = {"painting": project}
-    return render(request, "painting_detail.html", context=context)
+    painting = Painting.objects.get(pk=pk).count
+    context = {"painting": painting}
+    return render(request, "catalog/painting_detail.html", context)
 
 
 def painter_index(request):
-    painters = Painter.objects.all()
+    painters = Painter.objects.all().count
     context = {"painters": painters}
-    return render(request, "painter_index.html", context=context)
+    return render(request, "catalog/painter_index.html", context)
 
 
 def painter_detail(request, pk):
-    painter = Painter.objects.get(pk=pk)
+    painter = Painter.objects.get(pk=pk).count
     context = {"painter": painter}
-    return render(request, "painter_detail.html", context=context)
+    return render(request, "catalog/painter_detail.html", context)
 
 
-# class BookListView(generic.ListView):
-#    model = Painting
