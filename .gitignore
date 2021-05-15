@@ -1,2 +1,26 @@
-/venv
-__pycache__
+*.log
+*.pot
+*.pyc
+__pycache__/
+db.sqlite3
+db.sqlite3-journal
+media
+static
+wheels/
+eggs/
+.eggs/
+parts/
+sdist/
+var/
+
+# Environments
+# .env
+.env/
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+pythonenv*
+
