@@ -10,6 +10,7 @@ django-admin-inline-paginator = "*"
 pillow = "*"
 django-bootstrap-icons = "*"
 django-icons = "*"
+pip-autoremove = "*"
 
 [dev-packages]
 
