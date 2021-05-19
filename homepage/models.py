@@ -12,4 +12,4 @@ from django.db import models
 
 # Todo: Upload photos
 
-# todo Django anywhere, updated  version.
+# todo Django anywhere, updated version.
