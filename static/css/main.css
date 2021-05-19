@@ -24,6 +24,9 @@
   background-color: #f32a5a;
 }
 
+.ds-bg-success {
+  background-color: #e5989b;
+}
 
 #mainNav .navbar-nav li.nav-item a.nav-link {
   border-bottom: 2px solid transparent;
