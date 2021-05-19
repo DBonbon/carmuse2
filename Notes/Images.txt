@@ -1,0 +1,73 @@
+Images:
+
+two types of images:
+
+full size, those that Jean Marie provided.
+    these images will then be manipulated to serve.
+
+Posts files: no need to keep the original image (the avatar in the above example);
+    when the user uploads an image, to process it and save the result.
+
+    Possible solution ImageKit - ProcessedImageField class:
+
+Images in library to manipulate needs to:
+    be cropped adequatly, in 2 models, portrait and landscape.
+
+    # todo How to crop images?
+
+Optimize images with Pillow as not all browsers suppurt webp format.
+
+https://github.com/andrefarzat/django-webp
+
+Later, in couple of months to check how to serve two images at once??
+ Serve two uploaded images version - WebP and JPEG
+
+follow this tutorial:
+Storing Django Static and Media Files on Amazon S3
+https://testdriven.io/blog/storing-django-static-and-media-files-on-amazon-s3/
+
+1. Django to Aws
+2. resite the image before serving?
+3. create post applications that enables uploading images? I already have similar thing.
+
+4. Corey tutorial allows to serve the image with AWS. Build on this?
+
+
+
+Later to apply the following library that serves webp via templates
+only to browsers that support the format.
+
+Todo thumbnails for Admin - third priority
+
+
+
+
+
+Structure:
+
+Apps
+
+
+static, templates, media
+
+django project
+
+django venv
+
+manage.py
+
+
+
+
+A tutorial to upload images
+
+https://studygyaan.com/django/how-to-upload-and-display-image-in-django
+
+todo understand hbow to corporate whitenoise
+
+todo install whitenoise?
+
+
+
+
+
