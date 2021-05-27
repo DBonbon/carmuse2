@@ -11,6 +11,7 @@ pillow = "*"
 django-bootstrap-icons = "*"
 django-icons = "*"
 pip-autoremove = "*"
+django-crispy-forms = "*"
 
 [dev-packages]
 
