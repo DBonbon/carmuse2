@@ -40,13 +40,24 @@ only to browsers that support the format.
 Todo thumbnails for Admin - third priority
 
 
+Users/templates/registration
 
+The password_resset_form.html form allows the user to request a reset
+it is followed by a passowrd_resset_done.html that confirms email was sent
+the passowrd_resset_confirm.html is the actual form to modify the password
+the passowrd_resset_complete.html assurs the User the process was completed.
+
+the password_reset_email.html determines the body of the email
+
+there should be a file registration/password_reset_subject.txt that determines how to
+change the subject.
+
+# todo how to apply registration/password_reset_subject.txt, not a priority
 
 
 Structure:
 
 Apps
-
 
 static, templates, media
 

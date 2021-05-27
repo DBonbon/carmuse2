@@ -80,3 +80,9 @@ background-size: cover;
   width: 330px;
   background-color: #555;
 }
+
+
+.hs.content-section {
+  height: 200px;
+  width: 200px;
+  }

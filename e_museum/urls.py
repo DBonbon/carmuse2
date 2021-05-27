@@ -19,6 +19,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import include, url
+from users import views as user_views
 
 urlpatterns = [
     path('', include('homepage.urls',)),
@@ -29,7 +30,9 @@ urlpatterns = [
     path('about/', include('about.urls')),
     path('contact/', include('contact.urls')),
     path('exhibitions/', include('exhibitions.urls')),
-    url(r"^", include("users.urls")),
+    path('users/', include('users.urls')),
+    # path('register/', user_views.register, name='register'),
+    # url(r"^", include("users.urls")),
     # path('dashboard/', include("users.urls")),
     # path('accounts/', include('django.contrib.auth.urls')),
 ]
