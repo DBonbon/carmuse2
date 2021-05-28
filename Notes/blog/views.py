@@ -28,9 +28,9 @@ class PostListView(ListView):
 #todo Comments how to incorperate them with CSS, collapsing windows and.../
 # todo authors, logins, etc'
 
-# The below structure functioned partially. It displayed the imeages, but not in the right place.
-# I use know Corey's n10 structure.
-# Which is only Post view and post detail.
+# The below structure functioned partially. It displayed the imeages, but not in the right place. 
+# I use know Corey's n10 structure. 
+# Which is only Post view and post detail. 
 
 
 """

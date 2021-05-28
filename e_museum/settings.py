@@ -156,4 +156,4 @@ LOGIN_REDIRECT_URL = 'home'
 
 LOGIN_URL = 'users/login'
 
-# todo redirect it to the blog index view
+# todo redirect it to the blogindex view
