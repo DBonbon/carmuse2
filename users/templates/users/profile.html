@@ -1,8 +1,14 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-    <div class="content-section mx-auto" style="width: 400px;">
-      <div class="media">
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+
+<div class="login">
+    <form class="form">
+        <form class="registration-form">
+        <div class="media">
         <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
         <div class="media-body">
           <h2 class="account-heading">{{ user.username }}</h2>
@@ -19,6 +25,8 @@
             <div class="form-group">
                 <button class="btn btn-outline-info" type="submit">Update</button>
             </div>
+        </form>
+            </form>
         </form>
     </div>
 {% endblock content %}

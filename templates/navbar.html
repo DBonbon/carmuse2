@@ -11,7 +11,7 @@
 {% url 'register' as register_url %}
 {% url 'logout' as logout_url %}
 {% url 'profile' as profile_url %}
-
+<!--{% url 'post-create' as post-create_url %}-->
 <!--    todo add about, login, admin-->
 
 <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
@@ -33,6 +33,7 @@
                         {% if user.is_authenticated %}
                         <li class="nav-item mx-1 mx-ms-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == login_url %} active {%endif%}" href="{{ logout_url }}">logout</a></li>
                         <li class="nav-item mx-1 mx-ms-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == login_url %} active {%endif%}" href="{{ profile_url }}">profile</a></li>
+                        <li class="nav-item mx-1 mx-ms-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == login_url %} active {%endif%}" href="{% url 'post-create' %}">New Post</a></li>
                         {% else %}
                         <li class="nav-item mx-1 mx-ms-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == login_url %} active {%endif%}" href="{{ login_url }}">login</a></li>
                         <li class="nav-item mx-1 mx-ms-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == login_url %} active {%endif%}" href="{{ register_url }}">register</a></li>
