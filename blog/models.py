@@ -11,7 +11,6 @@ class Category(models.Model):
         verbose_name_plural = "Categories"
 
 
-
 class Post(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField()
