@@ -39,8 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'catalog.apps.CatalogConfig',
-    # 'blog.apps.BlogConfig',
-    'blogi.apps.BlogiConfig',
+    'blog.apps.BlogConfig',
     'about.apps.AboutConfig',
     'contact.apps.ContactConfig',
     'homepage.apps.HomepageConfig',
@@ -48,6 +47,8 @@ INSTALLED_APPS = [
     'import_export',
     'django_admin_inline_paginator',
     'django_bootstrap_icons',
+    'users',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -155,4 +156,4 @@ LOGIN_REDIRECT_URL = 'home'
 
 LOGIN_URL = 'users/login'
 
-# todo redirect it to the blogindex view
+# todo redirect it to the blog index view
