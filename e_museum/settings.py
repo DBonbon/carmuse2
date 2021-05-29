@@ -48,8 +48,6 @@ INSTALLED_APPS = [
     'import_export',
     'django_admin_inline_paginator',
     'django_bootstrap_icons',
-    'users',
-    'crispy_forms',
 ]
 
 MIDDLEWARE = [
