@@ -16,7 +16,7 @@ class Post(models.Model):
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
-    # categories = models.ManyToManyField("Category", related_name="posts")
+    categories = models.ManyToManyField("Category", related_name="posts")
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=True)
 
     def __str__(self):

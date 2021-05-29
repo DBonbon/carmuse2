@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from blog.forms import CommentForm
-from blog.models import Post, Comment
+from blogi.forms import CommentForm
+from blogi.models import Post, Comment
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
     ListView,
@@ -10,12 +10,12 @@ from django.views.generic import (
     DeleteView
 )
 
-
+"""
 def blog_index(request):
     posts = Post.objects.all().order_by("-created_on")
     context = {"posts": posts}
     return render(request, "blog/blog_index.html", context)
-
+"""
 
 class PostListView(ListView):
     model = Post
@@ -59,7 +59,7 @@ def blog_category(request, category):
         "-created_on"
     )
     context = {"category": category, "posts": posts}
-    return render(request, "blog/blog_category.html", context)
+    return render(request, "blogi/blog_category.html", context)
 
 
 class PostDetailView(DetailView):
