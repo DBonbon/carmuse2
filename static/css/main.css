@@ -102,3 +102,28 @@ background-size: cover;
 .article-metadata a:hover {
   color: #333;
   text-decoration: none;
+
+
+#module {
+  width: 300px;
+}
+
+#module a.collapsed:after {
+  content: '+ Show More';
+}
+
+#module a:not(.collapsed):after {
+  content: '- Show Less';
+}
+
+#module #collapseExample.collapse:not(.show) {
+  display: block;
+  /* height = lineheight * no of lines to display */
+  height: 4.5em;
+  overflow: hidden;
+}
+
+#module #collapseExample.collapsing {
+  height: 4.5em;
+}
+
