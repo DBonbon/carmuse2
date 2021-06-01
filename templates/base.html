@@ -18,9 +18,16 @@
         <link href="{% static 'theme/css/styles.css' %}" rel="stylesheet" />
 
         <link href="{% static 'css/main.css' %}" rel="stylesheet" />
+<link href="{% static 'css/blog.css' %}" rel="stylesheet" />
+
 
 </head>
 <body>
+
+    {% block mycss %} {% endblock mycss %}
+    {# to be followed by : {% block mycss %} <style> Your entire css </style> {% endblock %} #}
+
+
     {% include 'navbar.html'%}
     <main id="main">
         {%block content%}
@@ -33,6 +40,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <!-- Core theme JS-->
     <script src="{% static 'theme/js/scripts.js' %}"></script>
+
 
 </body>
 </html>

@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from blog.forms import CommentForm
 from blog.models import Post, Comment
+from django.db.models import Q
+from django.core.paginator import Paginator
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
     ListView,
@@ -24,7 +26,42 @@ class PostListView(ListView):
     ordering = ['-created_on']
 
 
-#todo convert the def (request) into class based structure.
+def search(request):
+    if request.method == "POST":
+        search = request.POST['search']
+        posts = Post.objects.filter(Q(title__icontains=search) | Q(content__icontains=search))
+
+        context = {
+                'search': search,
+                'posts': posts,
+
+        }
+
+        return render(request, "blog/search.html", context)
+
+
+    else:
+        return render(request, "blog/search.html", {})
+
+
+"""
+def search(request):
+    qeury=None
+    results=[]
+    if request.method=="POST":
+        query = request.POST('search')
+        results = Post.objects.filter(Q(title__icontains=search) | Q(content__icontains=search))
+
+       # pages = Paginator(request, num=10)
+        context = {
+            'query': query,
+            'results': results,
+        }
+    return render(request, "blog/search.html", context)
+
+"""
+
+# todo convert the def (request) into class based structure.
 #todo Comments how to incorperate them with CSS, collapsing windows and.../
 # todo authors, logins, etc'
 
@@ -51,8 +88,8 @@ def post_detail(request, pk):
 
     context = {"post": post, "comments": comments, "form": form}
     return render(request, "blog/post_detail.html", context)
-"""
 
+"""
 
 def blog_category(request, category):
     posts = Post.objects.filter(categories__name__contains=category).order_by(

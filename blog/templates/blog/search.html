@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+<container class="d-flex justify-content-center">
+    {% if search %}
+
+        <col class="sm-12">
+        <h1>Posts containing "{{ search }}":</h1>
+        </col>
+
+    <br>
+
+        <col class="sm-12">
+        {% for post in posts %}
+        <a href="{% url 'post_detail' post.id%}">{{ post }}</a><br>
+        {% endfor %}
+
+        {% else %}
+        <h4>There are no results for your query</h4>
+        </col>
+
+    {% endif %}
+</container>
+
+
+{% endblock %}

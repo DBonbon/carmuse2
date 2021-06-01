@@ -33,9 +33,9 @@ input[type=text]:focus {
 </head>
 
 
-<form action="{% url 'search' %}" method="POST">
+<form action="{% url 'post:search' %}" method="POST">
   {% csrf_token %}
-    <input type="text" name="search" placeholder="Search Posts">
+    <input type="text" name="searched" placeholder="Search Posts">
 </form>
 
 

@@ -81,4 +81,14 @@ todo install whitenoise?
 
 
 
+Blog Search
+
+the search def is based upon the POST request... due to the nature of the application.
+
+it was based on:
+https://www.youtube.com/watch?v=AGtae4L5BbI
+
+
+The Search Catalog however, is based on the GET request since the data is static.
+
 

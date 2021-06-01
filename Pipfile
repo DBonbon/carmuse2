@@ -12,6 +12,8 @@ django-bootstrap-icons = "*"
 django-icons = "*"
 pip-autoremove = "*"
 django-crispy-forms = "*"
+cloudinary = "*"
+django-cloudinary-storage = "*"
 
 [dev-packages]
 

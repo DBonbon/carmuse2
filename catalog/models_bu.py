@@ -129,6 +129,36 @@ class Painter(models.Model):
     remark = models.CharField(max_length=200, null=True, blank=True)
     image = models.ImageField(upload_to="painters/", null=True, blank=True) # , upload_to="painters"
 
+    class Meta:
+        ordering = ['last_name', 'first_name']
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        img= Image.open(self.image.path)
+
+        try:
+            # image = Image.open(filepath)
+            for orientation in ExifTags.TAGS.keys():
+                if ExifTags.TAGS[orientation] == 'Orientation':
+                    break
+            exif = dict(img._getexif().items())
+
+            if exif[orientation] == 3:
+                img = img.rotate(180, expand=True)
+            elif exif[orientation] == 6:
+                img = img.rotate(270, expand=True)
+            elif exif[orientation] == 8:
+                img = img.rotate(90, expand=True)
+        except (AttributeError, KeyError, IndexError):
+            pass
+
+        if img.height > 250 or img.weight > 250:
+            output_size = (250, 250)
+            img.thumbnail(output_size)
+            #rotate_image(self.image.path)
+            img.save(self.image.path)
+
+
     def get_absolute_url(self):
         """Returns the url to access a particular painter instance."""
         return reverse('painter-detail', args=[str(self.id)])

@@ -127,3 +127,69 @@ background-size: cover;
   height: 4.5em;
 }
 
+
+
+
+
+
+
+
+
+
+.hv-img {
+    width: 200px; /* You can set the dimensions to whatever you want */
+    height: 200px;
+    object-fit: cover;
+}
+
+.img-max {
+  max-width: 500px
+}
+
+.myimage{
+    width: 100%;
+}
+
+.imgdiv{
+    height: 200px;
+    overflow: hidden;
+}
+
+
+body{
+    padding-top: 70px;
+    }
+
+.container{
+
+}
+
+ .thumbnail img {
+     display: flex; /*remove this*/
+     float: left; /*remove this*/
+     margin-left: 50%; /*added this*/
+     transform: translateX(-50%); /*added this*/
+ }
+
+
+.jumbotron{
+    background: #ecf0f1;
+
+}
+.jumbotron .h1, .jumbotron h1, .jumbotron p{
+    color:#2C3E50 !important;
+     font-family: "Gloria Hallelujah";
+}
+
+.myimage{
+    width: 350px;
+    height: 350px;
+    background-size: cover;
+    background-position: center;
+    background-origin: border-box;
+}
+.imgdiv{
+    overflow:hidden;
+    height:200px;
+
+}
