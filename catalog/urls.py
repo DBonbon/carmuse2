@@ -9,6 +9,7 @@ urlpatterns = [
     path('painting<int:pk>/', views.painting_detail, name="painting_detail"),
     path('painters/', views.painter_index, name="painters"),
     path('painter<int:pk>/', views.painter_detail, name="painter_detail"),
+    path("art_search/", views.art_search, name="art_search"),
 ]
 
 """path('', views.index, name='index'),

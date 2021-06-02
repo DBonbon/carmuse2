@@ -2,11 +2,43 @@
 {% load static %}
 {% load bootstrap_icons %}
 
-{% block mycss %} <style> <link href="{% static 'css/style.css' %}" rel="stylesheet" /> </style> {% endblock %}
+{% block mycss %}
 
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+<link href="{% static 'css/style.css' %}" rel="stylesheet" />
+
+
+input[type=text] {
+  width: 130px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: Red;
+  background-image: url('searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+  width: 100%;
+}
+</style>
+</head>
+{% endblock mycss %}
 
 {% block content %}
-!-- Portfolio Section-->
+
+<form action="{% url 'art_search' %}" method="get">
+    <input type="text" name="q" placeholder="Search Paintings">
+</form>
+
+<!-- Portfolio Section-->
         <section class="page-section portfolio" id="portfolio">
             <div class="container">
                 <!-- Portfolio Section Heading-->

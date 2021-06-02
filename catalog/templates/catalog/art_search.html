@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<container class="text-center">
+{% if query %}
+<h3>Searched for: "{{ query }}"</h3>
+
+<h3>
+    {% with paintings.count as total_paintings %}
+    Found {{ total.paintings }} painting{{ total_paintings|pluralize }}
+    {% endwith %}
+</h3>
+
+{% for painting in paintings %}
+<a href="{{painting.get_absolute_url}}"><h6>{{painting.title}}</h6></a><br>
+
+{% empty %}
+<h4>There are no results for your query</h4>
+{% endfor %}
+
+{% else %}
+<h2>NO QUERY ERROR</h2>
+{% endif %}
+
+</container>
+{% endblock %}

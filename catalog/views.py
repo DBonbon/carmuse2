@@ -2,6 +2,7 @@ from django.shortcuts import render
 from . models import Painter, Painting, Category, Support
 # from django.views import generic
 from django.core.paginator import Paginator
+from django.db.models import Q
 
 
 def index(request):
@@ -36,6 +37,34 @@ def painting_index(request):
 
     context = {'page_obj': page_obj}
     return render(request, "catalog/painting_index.html", context)
+
+"""
+def search(request):
+    if request.method == "POST":
+        search = request.POST['search']
+        paintings = Painting.objects.filter(Q(title__icontains=search) | Q(content__icontains=search))
+
+        context = {
+                'search': search,
+                'paintings': paintings,
+
+        }
+
+        return render(request, "catalog/art_search.html", context)
+"""
+
+
+def art_search(request):
+        if request.method=="GET":
+            query=request.GET.get('q')
+            paintings=Painting.objects.filter(Q(title__icontains=query) | Q(description__icontains=query))
+
+        context = {
+            'query': query,
+            'paintings': paintings,
+        }
+
+        return render(request, "catalog/art_search.html", context)
 
 
 def painting_detail(request, pk):
