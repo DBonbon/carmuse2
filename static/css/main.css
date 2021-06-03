@@ -8,6 +8,7 @@
   }
 }
 
+/*
 
 @font-face {
     font-family: "Teki Font";
@@ -19,11 +20,13 @@
 .navbar-brand {
     font-family: 'Teki Font';
 }
+*/
 
 .hs-bg-primary {
   background-color: #f32a5a;
 }
 
+/*
 
 #mainNav .navbar-nav li.nav-item a.nav-link {
   border-bottom: 2px solid transparent;
@@ -46,6 +49,7 @@
   background: None;
   color: #f32a5a;
 }
+*/
 
 .masthead {
   padding-top: 6rem;
@@ -127,14 +131,13 @@ background-size: cover;
   height: 4.5em;
 }
 
-
-
-
-
-
-
-
-
+.back-img {
+    position: static;
+    background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: cover;
+    height: 100%;
+}
 
 .hv-img {
     width: 200px; /* You can set the dimensions to whatever you want */

@@ -1,162 +1,76 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+
 {% load static %}
-{% load bootstrap_icons %}
 
-{% block mycss %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
 
+    <link rel="stylesheet" href="../../static/css/index.css">
+<link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-<link href="{% static 'css/style.css' %}" rel="stylesheet" />
-
-
-input[type=text] {
-  width: 130px;
-  box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-  background-color: Red;
-  background-image: url('searchicon.png');
-  background-position: 10px 10px;
-  background-repeat: no-repeat;
-  padding: 12px 20px 12px 40px;
-  -webkit-transition: width 0.4s ease-in-out;
-  transition: width 0.4s ease-in-out;
-}
-
-input[type=text]:focus {
-  width: 100%;
-}
-</style>
+    <script src="../../static/js/masonry.pkgd.min.js"></script>
 </head>
-{% endblock mycss %}
 
-{% block content %}
-
-<form action="{% url 'art_search' %}" method="get">
-    <input type="text" name="q" placeholder="Search Paintings">
-</form>
-
-<!-- Portfolio Section-->
-        <section class="page-section portfolio" id="portfolio">
-            <div class="container">
-                <!-- Portfolio Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Collection</h2>
-                <!-- Icon Divider-->
-                <div class="divider-custom">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-paint-brush"></i></div>
-                    <div class="divider-custom-line"></div>
+<body>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="label">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                <!-- Portfolio Grid Items-->
-
-                <div class="row justify-content-center">
-                    <!-- Portfolio Item 1-->
-                    {% for painting in page_obj %}
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="thumbnail">
-                        <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1{{ painting.id }}">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <div class="thumbnail">
-                            <img class="img-fluid myimage" src="{{ painting.image.url }}"/>
-                        </div>
-                            </div>
-                            </div>
-                    </div>
-
-                    <!-- Portfolio Modal 1-->
-
-                    <div class="portfolio-modal modal fade" id="portfolioModal1{{painting.id}}" tabindex="-1" role="dialog" aria-labelledby="portfolioModal1Label" aria-hidden="true">
-                        <div class="modal-dialog modal-lg" role="document">
-                            <div class="modal-content">
-                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true"><i class="fas fa-times"></i></span>
-                                </button>
-                                <div class="modal-body text-center">
-                                    <div class="container">
-                                        <div class="row align-items-start">
-                                            <div class="col-lg-10">
-                                                <!-- Portfolio Modal - Title-->
-                                                <h5 class="portfolio-modal-title text-secondary text-lowercase mb-0" id="portfolioModal1Label">{{ painting.title }}</h5>
-                                                <!-- Icon Divider-->
-                                                <div class="divider-custom">
-                                                    <div class="divider-custom-line"></div>
-                                                    <div class="divider-custom-icon"><i class="fas fa-paint-brush"></i></div>
-                                                    <div class="divider-custom-line"></div>
-                                                </div>
-                                                <!-- Portfolio Modal - Image-->
-                                                <img class="img-fluid rounded mb-5" src="{{ painting.image.url }}" alt="..." />
-                                                <!-- Portfolio Modal - Text-->
-                                                <p class="mb-5"><strong>Description:</strong> {{ painting.description }}
-                                                <br>
-                                                    <strong>Technique:</strong> {{ painting.medium }} sur {{ painting.support }}
-                                                <br>
-                                                    <strong>Location:</strong> {{ painting.location }}
-                                                </p>
-                                                <button class="btn btn-primary" data-dismiss="modal">
-                                                    <i class="fas fa-times fa-fw"></i>
-                                                    Close Window
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
+                <div class="modal-body">
+                    <img style="width: 100%;" alt="" class="mod-img">
+                    <p id="img-desc"></p>
+                    <p id="img-location"></p>
+                    <p id="img-category"></p>
+                </div>
+                <div class="modal-footer">
+                    <input name="" id="url-to-copy" style="position:relative;left:10000px">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary btn-sm" onclick="copyUrl()">Copy Url</button>
                 </div>
             </div>
-        </section>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <h1 class=" text-center">Welcome to pIxElS</h1>
+        <div class="row grid flex">
+            {% for painting in paintings%}
+                <div class="grid-item">
+                    <img onclick="showModal('{{painting.title}}','{{painting.description}}')" class="image" src="{{painting.image_url}}">
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 
 
-<div class="col-4 offset-4">
-  <nav aria-label="...">
-    <ul class="pagination">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+            var elem = document.querySelector('.grid');
+            var msnry = new Masonry(elem, {
+                // options
+                itemSelector: '.grid-item',
+                columnWidth: 200
+            });
 
-      {% if page_obj.has_previous%}
-        <li class="page-item">
-          <a href="?page={{ page_obj.previous_page_number }}" class="page-link">Previous</a>
-        </li>
-      {% else %}
-        <li class="page-item disabled">
-          <span class="page-link">Previous</span>
-        </li>
-      {% endif %}
-
-      <li class="page-item">
-        <a class="page-link" href="#">{{ page_obj.number }}</a>
-      </li>
-
-    <!-- new -->
-    {% if page_obj.has_next %}
-      <li class="page-item ">
-        <a class="page-link" href="?page={{page_obj.next_page_number}}">Next</a>
-      </li>
-    {% else %}
-      <li class="page-item disabled">
-        <span class="page-link">Next</span>
-      </li>
-    {% endif %}
-    <!--/new -->
-
-    </ul>
-  </nav>
-</div>
+            // element argument can be a selector string
+            // for an individual element
+            var msnry = new Masonry('.grid', {
+                // options
+            })
+        </script>
+        <script src="../../static/js/nav.js"></script>
+        <script src="../../static/js/modal.js"></script>
 
 
 
-
-{% endblock %}
-
-
-
-
-
-
-
-
+</body>
+</html>
