@@ -1,0 +1,53 @@
+{% load static %}
+
+<link href="{% static 'css/navbar.css' %}" rel="stylesheet" />
+
+{% url 'home' as home_url %}
+{% url 'paintings' as paintings_url %}
+{% url 'painters' as painters_url %}
+{% url 'blog' as blog_url %}
+{% url 'about' as about_url %}
+{% url 'contact' as contact_url %}
+{% url 'exhibitions' as exhibitions_url %}
+{% url 'login' as login_url %}
+{% url 'register' as register_url %}
+{% url 'logout' as logout_url %}
+{% url 'profile' as profile_url %}
+<!--{% url 'post-create' as post-create_url %}-->
+<!--    todo add about, login, admin-->
+
+<nav class="navbar navbar-expand-lg bg-secondary text-lowercase fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand js-scroll-trigger" href="#{{ home_url }}">CarMuse</a>
+                <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold hs-bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-0 px-0 px-lg-3 js-scroll-trigger {% if request.path == home_url %} active {%endif%}" href="{{ home_url }}">Home</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-0 px-0 px-lg-3 js-scroll-trigger {% if request.path == exhibitions_url %} active {%endif%}" href="{{ exhibitions_url }}">Exhibitions</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-0 px-0 px-lg-3 js-scroll-trigger {% if request.path == paintings_url %} active {%endif%}" href="{{ paintings_url }}">Paintings</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-0 px-0 px-lg-3 js-scroll-trigger {% if request.path == painters_url %} active {%endif%}" href="{{ painters_url }}">Biographies</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-0 px-0 px-lg-3 js-scroll-trigger {% if request.path == blog_url %} active {%endif%}" href="{{ blog_url }}">Blog</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-0 px-0 px-lg-3 js-scroll-trigger {% if request.path == about_url %} active {%endif%}" href="{{ about_url }}">About</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-0 px-0 px-lg-3 js-scroll-trigger {% if request.path == contact_url %} active {%endif%}" href="{{ contact_url }}">Contact</a></li>
+                        </ul>
+                        <ul class="navbar-nav ml-auto">
+                          {% if user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link py-0 px-0 px-lg-3 js-scroll-trigger {% if request.path == login_url %} active {%endif%}" href="{{ logout_url }}">logout</a></li>
+                        <li class="nav-item"><a class="nav-link py-0 px-0 px-lg-3 js-scroll-trigger {% if request.path == login_url %} active {%endif%}" href="{{ profile_url }}">profile</a></li>
+                        <li class="nav-item mx"><a class="nav-link py-0 px-0 px-lg-3 js-scroll-trigger {% if request.path == login_url %} active {%endif%}" href="{% url 'post-create' %}">New Post</a></li>
+                        {% else %}
+                        <li class="nav-item mx-1 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == login_url %} active {%endif%}" href="{{ login_url }}">login</a></li>
+                        <li class="nav-item mx-1 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == login_url %} active {%endif%}" href="{{ register_url }}">register</a></li>
+                        {% endif %}
+
+
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+

@@ -1,0 +1,214 @@
+{% load static %}
+
+<link href="{% static 'css/navbar.css' %}" rel="stylesheet" />
+
+{% url 'home' as home_url %}
+{% url 'paintings' as paintings_url %}
+{% url 'painters' as painters_url %}
+{% url 'blog' as blog_url %}
+{% url 'about' as about_url %}
+{% url 'contact' as contact_url %}
+{% url 'exhibitions' as exhibitions_url %}
+{% url 'login' as login_url %}
+{% url 'register' as register_url %}
+{% url 'logout' as logout_url %}
+{% url 'profile' as profile_url %}
+<!--{% url 'post-create' as post-create_url %}-->
+<!--    todo add about, login, admin-->
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+        <img src="images/logo.png" alt="CarMuse logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-trigger="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="offcanvas-header mt-3">
+        <button type="button" class="btn-close float-left"><i class="fas fa-times"></i></button>
+        <h5 class="text-white py-2" style="text-align:right">Menu</h5>
+
+      </div>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Expo</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="#">Catalogue</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Bios</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="#">Blog</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="#">Info</a>
+        </li>
+      </ul>
+        <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Logout</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">New Post</a>
+        </li>
+            <li class="nav-item">
+          <a class="nav-link" href="#">Log In</a>
+        </li>
+            <li class="nav-item">
+          <a class="nav-link" href="#">Sign Up</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+{% load static %}
+
+<link href="{% static 'css/navbar.css' %}" rel="stylesheet" />
+<link href="{% static 'js/navbar.js' %}" rel="stylesheet" />
+
+{% url 'home' as home_url %}
+{% url 'paintings' as paintings_url %}
+{% url 'painters' as painters_url %}
+{% url 'blog' as blog_url %}
+{% url 'about' as about_url %}
+{% url 'contact' as contact_url %}
+{% url 'exhibitions' as exhibitions_url %}
+{% url 'login' as login_url %}
+{% url 'register' as register_url %}
+{% url 'logout' as logout_url %}
+{% url 'profile' as profile_url %}
+<!--{% url 'post-create' as post-create_url %}-->
+<!--    todo add about, login, admin-->
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Expo</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="#">Catalogue</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Bios</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="#">Blog</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="#">Info</a>
+        </li>
+      </ul>
+        <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#" id="logout">Logout</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" id="profile">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" id="newpost">New Post</a>
+        </li>
+            <li class="nav-item">
+          <a class="nav-link" href="#"id="login">Log In</a>
+        </li>
+            <li class="nav-item">
+          <a class="nav-link" href="#" id="signup">Sign Up</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!--todo Search Bar follow: https://www.youtube.com/watch?v=sPCW31WViq4-->
+<!--<nav class="navbar navbar-expand-lg bg-secondary text-lowercase fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand js-scroll-trigger" href="#{{ home_url }}">CarMuse</a>
+                <button class="navbar-toggler navbar-toggler text-uppercase font-weight-bold hs-bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav mr-right">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == home_url %} active {%endif%}" href="{{ home_url }}">Home</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == exhibitions_url %} active {%endif%}" href="{{ exhibitions_url }}">Exhibitions</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == paintings_url %} active {%endif%}" href="{{ paintings_url }}">Paintings</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == painters_url %} active {%endif%}" href="{{ painters_url }}">Biographies</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == blog_url %} active {%endif%}" href="{{ blog_url }}">Blog</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == about_url %} active {%endif%}" href="{{ about_url }}">About</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == contact_url %} active {%endif%}" href="{{ contact_url }}">Contact</a></li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item mx-1 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == login_url %} active {%endif%}" href="{{ logout_url }}">logout</a></li>
+                        <li class="nav-item mx-1 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == login_url %} active {%endif%}" href="{{ profile_url }}">profile</a></li>
+                        <li class="nav-item mx-1 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == login_url %} active {%endif%}" href="{% url 'post-create' %}">New Post</a></li>
+                        {% else %}
+                        <li class="nav-item mx-1 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == login_url %} active {%endif%}" href="{{ login_url }}">login</a></li>
+                        <li class="nav-item mx-1 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == login_url %} active {%endif%}" href="{{ register_url }}">register</a></li>
+                        {% endif %}
+
+
+                    </ul>
+                </div>
+            </div>
+        </nav>-->
+
+
+
+
+
+
+
+<!--todo Search Bar follow: https://www.youtube.com/watch?v=sPCW31WViq4-->
+<!--<nav class="navbar navbar-expand-lg bg-secondary text-lowercase fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand js-scroll-trigger" href="#{{ home_url }}">CarMuse</a>
+                <button class="navbar-toggler navbar-toggler text-uppercase font-weight-bold hs-bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav mr-right">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == home_url %} active {%endif%}" href="{{ home_url }}">Home</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == exhibitions_url %} active {%endif%}" href="{{ exhibitions_url }}">Exhibitions</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == paintings_url %} active {%endif%}" href="{{ paintings_url }}">Paintings</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == painters_url %} active {%endif%}" href="{{ painters_url }}">Biographies</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == blog_url %} active {%endif%}" href="{{ blog_url }}">Blog</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == about_url %} active {%endif%}" href="{{ about_url }}">About</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == contact_url %} active {%endif%}" href="{{ contact_url }}">Contact</a></li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item mx-1 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == login_url %} active {%endif%}" href="{{ logout_url }}">logout</a></li>
+                        <li class="nav-item mx-1 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == login_url %} active {%endif%}" href="{{ profile_url }}">profile</a></li>
+                        <li class="nav-item mx-1 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == login_url %} active {%endif%}" href="{% url 'post-create' %}">New Post</a></li>
+                        {% else %}
+                        <li class="nav-item mx-1 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == login_url %} active {%endif%}" href="{{ login_url }}">login</a></li>
+                        <li class="nav-item mx-1 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == login_url %} active {%endif%}" href="{{ register_url }}">register</a></li>
+                        {% endif %}
+
+
+                    </ul>
+                </div>
+            </div>
+        </nav>-->
+
+

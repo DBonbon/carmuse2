@@ -1,76 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
-
+{% extends "base.html" %}
 {% load static %}
+{% load bootstrap_icons %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home</title>
+{% block content %}
 
-    <link rel="stylesheet" href="../../static/css/index.css">
-<link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
+<style>
+    body{
+    margin: 0;
+    padding: 0;
+    background: #ecf0f3;
+    padding: 3% 0;
+}
 
-    <script src="../../static/js/masonry.pkgd.min.js"></script>
-</head>
+.card img{
+    width: 100%;
+    transition: 0.3s;
+    border-radius: 8px;
+}
 
+.container{
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.card{
+    border-radius: 12px;
+    padding: 3%;
+    margin-bottom: 6%;
+    background: #fff;
+    box-shadow: 10px 10px 24px -12px rgba(0,0,0,0.75);
+    transition: 0.3s;
+}
+.card:hover{
+    box-shadow: 10px 10px 24px -12px rgba(0,0,0,0.75);
+}
+
+.card:hover img{
+    transform: scale(90%);
+}
+
+@media screen and (max-width: 958px){
+    .card-columns{
+        column-count: 2;
+    }
+}
+
+@media screen and (max-width: 420px){
+    .card-columns{
+        column-count: 1;
+    }
+}
+
+
+
+</style>
 <body>
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="label">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-12">
+            <div class="card-columns">
+
+                <div class="card-container">
+
+                    {% for painting in page_obj %}
+                    <div class="card">
+                        <img src="{{ painting.image.url }}" alt="">
+                    </div>
+                    {% endfor %}
+
                 </div>
-                <div class="modal-body">
-                    <img style="width: 100%;" alt="" class="mod-img">
-                    <p id="img-desc"></p>
-                    <p id="img-location"></p>
-                    <p id="img-category"></p>
-                </div>
-                <div class="modal-footer">
-                    <input name="" id="url-to-copy" style="position:relative;left:10000px">
-                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary btn-sm" onclick="copyUrl()">Copy Url</button>
-                </div>
+
             </div>
+
         </div>
+
     </div>
 
-    <div class="container-fluid">
-        <h1 class=" text-center">Welcome to pIxElS</h1>
-        <div class="row grid flex">
-            {% for painting in paintings%}
-                <div class="grid-item">
-                    <img onclick="showModal('{{painting.title}}','{{painting.description}}')" class="image" src="{{painting.image_url}}">
-                </div>
-            {% endfor %}
-        </div>
-    </div>
-
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script>
-            var elem = document.querySelector('.grid');
-            var msnry = new Masonry(elem, {
-                // options
-                itemSelector: '.grid-item',
-                columnWidth: 200
-            });
-
-            // element argument can be a selector string
-            // for an individual element
-            var msnry = new Masonry('.grid', {
-                // options
-            })
-        </script>
-        <script src="../../static/js/nav.js"></script>
-        <script src="../../static/js/modal.js"></script>
-
-
-
+</div>
 </body>
-</html>
+{% endblock %}
