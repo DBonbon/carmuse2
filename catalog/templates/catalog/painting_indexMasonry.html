@@ -1,75 +1,122 @@
-<!DOCTYPE html>
-<html>
+{% extends "base.html" %}
+{% load static %}
+{% load bootstrap_icons %}
+
+{% block content %}
+
 <style>
-* {
-  box-sizing: border-box;
+    body{
+    margin: 0;
+    padding: 0;
+    background: #ecf0f3;
+    padding: 3% 0;
 }
 
-body {
-  margin: 0;
-  font-family: Arial;
+.card img{
+    width: 100%;
+    transition: 0.3s;
+    border-radius: 8px;
 }
 
-.header {
-  text-align: center;
-  padding: 32px;
+.container{
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
 }
 
-.row {
-  display: -ms-flexbox; /* IE10 */
-  display: flex;
-  -ms-flex-wrap: wrap; /* IE10 */
-  flex-wrap: wrap;
-  padding: 0 4px;
+.card{
+    border-radius: 12px;
+    padding: 3%;
+    margin-bottom: 6%;
+    background: #fff;
+    box-shadow: 10px 10px 24px -12px rgba(0,0,0,0.75);
+    transition: 0.3s;
+}
+.card:hover{
+    box-shadow: 10px 10px 24px -12px rgba(0,0,0,0.75);
 }
 
-/* Create four equal columns that sits next to each other */
-.column {
-  -ms-flex: 25%; /* IE10 */
-  flex: 25%;
-  max-width: 25%;
-  padding: 0 4px;
+.card:hover img{
+    transform: scale(90%);
 }
 
-.column img {
-  margin-top: 8px;
-  vertical-align: middle;
-  width: 100%;
+@media screen and (max-width: 958px){
+    .card-columns{
+        column-count: 2;
+    }
 }
 
-/* Responsive layout - makes a two column-layout instead of four columns */
-@media screen and (max-width: 800px) {
-  .column {
-    -ms-flex: 50%;
-    flex: 50%;
-    max-width: 50%;
-  }
+@media screen and (max-width: 420px){
+    .card-columns{
+        column-count: 1;
+    }
 }
 
-/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  .column {
-    -ms-flex: 100%;
-    flex: 100%;
-    max-width: 100%;
-  }
-}
+
+
 </style>
 <body>
+<div class="container">
 
-<!-- Header -->
-<div class="header">
-  <h1>Responsive Image Grid</h1>
-  <p>Resize the browser window to see the responsive effect.</p>
+    <div class="row">
+
+        <div class="col-12">
+            <div class="card-columns">
+
+                <div class="card-container">
+
+                    {% for painting in page_obj %}
+                    <div class="card">
+                        <img src="{{ painting.image.url }}" alt="">
+                    </div>
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+<div class="col-4 offset-4">
+  <nav aria-label="...">
+    <ul class="pagination">
+
+      {% if page_obj.has_previous%}
+        <li class="page-item">
+          <a href="?page={{ page_obj.previous_page_number }}" class="page-link">Previous</a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <span class="page-link">Previous</span>
+        </li>
+      {% endif %}
+
+      <li class="page-item">
+        <a class="page-link" href="#">{{ page_obj.number }}</a>
+      </li>
+
+    <!-- new -->
+    {% if page_obj.has_next %}
+      <li class="page-item ">
+        <a class="page-link" href="?page={{page_obj.next_page_number}}">Next</a>
+      </li>
+    {% else %}
+      <li class="page-item disabled">
+        <span class="page-link">Next</span>
+      </li>
+    {% endif %}
+    <!--/new -->
+
+    </ul>
+  </nav>
 </div>
 
-<!-- Photo Grid -->
-<div class="row">
-    {% for painting in page_obj %}
-  <div class="column">
-    <img src="{{ painting.image.url }}" style="width:100%">
-  </div>
-    {% endfor %}
 </div>
+
+
+
 </body>
-</html>
+{% endblock %}

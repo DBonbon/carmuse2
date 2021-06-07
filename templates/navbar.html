@@ -1,6 +1,5 @@
 {% load static %}
 
-<link href="{% static 'css/navbar.css' %}" rel="stylesheet" />
 
 {% url 'home' as home_url %}
 {% url 'paintings' as paintings_url %}
@@ -8,14 +7,103 @@
 {% url 'blog' as blog_url %}
 {% url 'about' as about_url %}
 {% url 'contact' as contact_url %}
-{% url 'exhibitions' as exhibitions_url %}
+{% url 'expo' as expo_url %}
 {% url 'login' as login_url %}
 {% url 'register' as register_url %}
 {% url 'logout' as logout_url %}
 {% url 'profile' as profile_url %}
 
+<style>
+.navbar {
+    position: absolute;
+    background: rgba(0,0,0,0.2)!important;
+    width: 100%;
+    z-index: 10;
+    margin-bottom:5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.navbar .nav-item {
+    color: #0DFFFF !important;
+}
+
+.navbar-dark .navbar-nav .nav-link{
+    color: #6A5FAB;!important;
+    margin-right:5px;
+}
+
+.nav-link:hover{
+    color: #8B008B;!important;
+}
+
+.navbar .navbar-brand{
+    color : #FFF;
+    font-weight: bolder;
+    font-size: 1.3em;
+}
+
+
+navbar-light .navbar-nav .nav-lin{
+    text-align: center;
+    margin-bottom: 10px!important;
+}
+
+
+.navbar-light .navbar-toggler{
+    color: rgba(0,0,0,0);
+    border-color: rgba(0,0,0,0);
+}
+
+#signup{
+    width: 60%;
+    margin: 0 auto;
+}
+
+
+.phone, .email. search  {
+    margin-right:5px;
+}
+
+.phone{
+    color: #03A9F4;
+}
+
+.email{
+    color: #E91E63;
+}
+
+#login, #logout {
+    border: 2px solid #fff;
+    border-radius: 200px;
+    padding: 0.2em 1rem!important;
+    line-height: 40px;
+}
+
+#login:hover, #logout:hover {
+    background-color: #F44336!important;
+    border: 2px solid #F44336;
+}
+
+#signup, #profile   {
+    border: 2px solid #F44336;
+    background-color: #F44336!important;
+    border-radius: 20px;
+    padding: 0.2em 1rem!important;
+    line-height: 30px;
+}
+
+#signup:hover, #profile:hover   {
+    background-color: #FFF!important;
+    border: 2px solid #FFF;
+    color: #F44336!important;
+}
+
+
+</style>
+
+
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <a class="navbar-brand" href="#">CarMuse</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -23,7 +111,8 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == home_url %} active {%endif%}" href="{{ home_url }}">Home</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == exhibitions_url %} active {%endif%}" href="{{ exhibitions_url }}">Exhibitions</a></li>
+<!--                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link {% if request.path == exhibitions_url %} active {%endif%}" href="{{ expo_list_url }}">Exhibitions</a></li>-->
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == expo_url %} active {%endif%}" href="{{ expo_url }}">Expo</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == paintings_url %} active {%endif%}" href="{{ paintings_url }}">Paintings</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == painters_url %} active {%endif%}" href="{{ painters_url }}">Biographies</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == blog_url %} active {%endif%}" href="{{ blog_url }}">Blog</a></li>
@@ -32,12 +121,12 @@
     </ul>
       <ul class="navbar-nav">
       {% if user.is_authenticated %}
-                        <li class="nav-item mx-1 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == login_url %} active {%endif%}" href="{{ logout_url }}">logout</a></li>
-                        <li class="nav-item mx-1 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == login_url %} active {%endif%}" href="{{ profile_url }}">profile</a></li>
+                        <li class="nav-item mx-1 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger js-scroll-trigger {% if request.path == login_url %} active {%endif%}" href="{{ logout_url }}" id="logout">logout</a></li>
+                        <li class="nav-item mx-1 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 {% if request.path == login_url %} active {%endif%}" href="{{ profile_url }}">profile</a></li>
                         <li class="nav-item mx-1 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == login_url %} active {%endif%}" href="{% url 'post-create' %}">New Post</a></li>
                         {% else %}
-                        <li class="nav-item mx-1 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == login_url %} active {%endif%}" href="{{ login_url }}">login</a></li>
-                        <li class="nav-item mx-1 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == login_url %} active {%endif%}" href="{{ register_url }}">register</a></li>
+                        <li class="nav-item mx-1 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == login_url %} active {%endif%}" href="{{ login_url }}" id="login">login</a></li>
+                        <li class="nav-item mx-1 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 js-scroll-trigger {% if request.path == login_url %} active {%endif%}" href="{{ register_url }}" id="register">register</a></li>
                         {% endif %}
     </ul>
   </div>

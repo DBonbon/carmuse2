@@ -3,61 +3,9 @@
 
 {% block content %}
 
-<div class="row row-cols-1 row-cols-md-2">
-    {% for expo in expos %}
-    <div class="col mb-4">
-      <div class="card">
-        <div class="view overlay">
-          <img class="card-img-top" src="{{expo.image.url}}" alt="">
-          <a href="#!">
-            <div class="mask rgba-white-slight"></div>
-          </a>
-        </div>
-        <div class="card-body">
-          <h4 class="card-title">{{expo.title}}</h4>
-          <p class="card-text">{{expo.description}}</p>
-          <a href="{% url 'detail' post.id %}" class="btn btn-primary btn-md">Read more</a>
-        </div>
-      </div>
-    </div>
-    {% endfor %}
-  </div>
-<!--Carousel Wrapper-->
-<div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
-    <!--Indicators-->
-    <ol class="carousel-indicators">
-    {% for p in paintings %}
-      <li data-target="#carousel-example-1z" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.counter0 == 0 %} active {% endif %}"></li>
-    {% endfor %}
-    </ol>
-    <!--/.Indicators-->
-    <!--Slides-->
-    <div class="carousel-inner" role="listbox">
-      {% for p in paintings %}
-      <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
-        <img class="d-block w-100" src="{{p.images.url}}"
-          alt="First slide">
-      </div>
-      {% endfor %}
-      <!--/First slide-->
-    <!--/.Slides-->
-    <!--Controls-->
-    <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-    <!--/.Controls-->
-  </div>
-
-  {% endblock %}
-
-
-
-
+for expo in expos
+    for image in expo
+        painting.id
 <p><strong>Genre:</strong> {{ book.genre.all|join:", " }}</p>
 
 

@@ -1,6 +1,5 @@
 from django.contrib import admin
-
-from .models import Expo, ExpoPhotos
+from .models import ExpoPhotos, Expo
 
 
 class ExpoPhotosAdmin(admin.StackedInline):
@@ -16,5 +15,6 @@ class ExpoAdmin(admin.ModelAdmin):
 
 
 @admin.register(ExpoPhotos)
-class ExpoPhotos(admin.ModelAdmin):
+class ExpoPhotosAdmin(admin.ModelAdmin):
     pass
+

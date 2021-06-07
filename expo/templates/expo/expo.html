@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row row-cols-1 row-cols-md-2">
+    {% for expo in expos %}
+    <div class="col mb-4">
+      <div class="card">
+        <div class="view overlay">
+          <img class="card-img-top" src="{{expo.title.url}}" alt="">
+          <a href="#!">
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+        <div class="card-body">
+          <h4 class="card-title">{{expo.title}}</h4>
+            <img class="card-img-top" src="{{expo.photo.url}}" alt="">
+          <p class="card-text">{{expo.description}}</p>
+          <a href="{% url 'expo_detail' expo.id %}" class="btn btn-primary btn-md">Read more</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+{% endblock %}
